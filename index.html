@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livraison de Colis à Dakar</title>
+  <link rel="icon" type="image/png" href="./assets/src/iconewebsite.png"
+
+
+  <meta name="description"
+    content="LivrExpress assure vos livraisons express de colis, documents et repas à Dakar en moins de 45 minutes. Suivi en temps réel et coursiers professionnels. Simulez votre tarif !">
+  <meta name="keywords"
+    content="livraison Dakar, coursier Dakar, livraison rapide, colis express Sénégal, LivrExpress, livraison moto Dakar">
+  <meta name="author" content="LivrExpress">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.livrexpress.sn/">
+  <meta property="og:title" content="LivrExpress | Livraison Ultra-Rapide à Dakar">
+  <meta property="og:description"
+    content="Vos documents, marchandises et repas livrés en moins de 45 minutes à Dakar. Suivi GPS en temps réel.">
+  <meta property="og:image" content="assets/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Navigation -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo" id="logo-link">
+        <i data-lucide="zap" class="logo-icon"></i>
+        <span>Livr<span class="text-accent">Express</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#how-it-works" class="nav-link">Comment ça marche</a></li>
+          <li><a href="#pricing" class="nav-link">Tarifs</a></li>
+          <li><a href="#testimonials" class="nav-link">Témoignages</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-cta-mobile">
+          <a href="#calculator-section" class="btn btn-primary">Commander</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#calculator-section" class="btn btn-primary btn-nav-desktop">
+          <span class="btn-slide"></span>
+          Commander
+        </a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge hero-anim">
+            <span class="badge-dot"></span>
+            Disponible 7j/7 à Dakar & Banlieue
+          </div>
+          <h1 class="hero-title hero-anim">Vos colis livrés à Dakar en un <span class="gradient-text">éclair</span></h1>
+          <p class="hero-subtitle hero-anim">Documents urgents, repas chauds ou marchandises e-commerce. Nos coursiers
+            professionnels livrent partout à Dakar en moins de 45 minutes avec suivi GPS en direct.</p>
+
+          <div class="hero-actions hero-anim">
+            <a href="#calculator-section" class="btn btn-primary btn-large">
+              <span class="btn-slide"></span>
+              Estimer ma livraison
+            </a>
+            <a href="#how-it-works" class="btn btn-secondary btn-large">
+              <span class="btn-slide"></span>
+              Comment ça marche ?
+            </a>
+          </div>
+
+          <div class="hero-stats hero-anim">
+            <div class="stat-item">
+              <span class="stat-number" data-target="45">0</span><span class="stat-suffix">m</span>
+              <span class="stat-label">Temps moyen</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="99.4">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Colis sécurisés</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="10">0</span><span class="stat-suffix">k+</span>
+              <span class="stat-label">Courses / mois</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual hero-anim">
+          <div class="mockup-card glass-panel">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mockup-title">Suivi de Course en Direct</div>
+            </div>
+
+            <!-- Conteneur de la carte Leaflet -->
+            <div class="mockup-map" style="position: relative; overflow: hidden;">
+              <div id="map" style="width: 100%; height: 300px;"></div>
+
+              <div class="map-hud">
+                <div class="hud-avatar">
+                  <div class="avatar-gradient">MS</div>
+                </div>
+                <div class="hud-details">
+                  <div class="hud-name">Moussa Sow</div>
+                  <div class="hud-status">En route vers Almadies</div>
+                </div>
+                <div class="hud-eta">5 min</div>
+              </div>
+            </div>
+
+            <div class="mockup-steps">
+              <div class="mockup-step active">
+                <div class="step-dot"></div>
+                <div class="step-info">
+                  <div class="step-title">Commande acceptée</div>
+                  <div class="step-desc">Plateau - 17:30</div>
+                </div>
+              </div>
+              <div class="mockup-step active">
+                <div class="step-dot pulse"></div>
+                <div class="step-info">
+                  <div class="step-title">Colis récupéré</div>
+                  <div class="step-desc">En cours de transit</div>
+                </div>
+              </div>
+              <div class="mockup-step">
+                <div class="step-dot"></div>
+                <div class="step-info">
+                  <div class="step-title">Livraison estimée</div>
+                  <div class="step-desc">Almadies - 18:15</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scripts Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+        <script>
+          // Initialisation de la carte sur Dakar
+          var map = L.map('map', {
+            zoomControl: false,
+            attributionControl: false
+          }).setView([14.7167, -17.4677], 13);
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+          // Ajout d'un marqueur personnalisé si besoin
+          L.marker([14.7167, -17.4677]).addTo(map);
+        </script>
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+          <div class="scroll-indicator-line"></div>
+          <span>Défiler</span>
+        </div>
+    </section>
+
+    <!-- Comment ça marche Section -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tagline">Processus Simple</span>
+          <h2 class="section-title">Comment ça marche ?</h2>
+          <p class="section-subtitle">Trois étapes simples et fluides pour expédier vos colis en toute tranquillité d'un
+            bout à l'autre de Dakar.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card reveal-card">
+            <div class="step-icon-wrapper">
+              <div class="step-number-badge">1</div>
+              <i data-lucide="map-pin" class="step-icon"></i>
+            </div>
+            <h3 class="step-title-card">Indiquez les adresses</h3>
+            <p class="step-text">Renseignez le point de départ et l'adresse de livraison finale à Dakar sur notre outil
+              en ligne.</p>
+          </div>
+
+          <div class="step-card reveal-card">
+            <div class="step-icon-wrapper">
+              <div class="step-number-badge">2</div>
+              <i data-lucide="package" class="step-icon"></i>
+            </div>
+            <h3 class="step-title-card">Choisissez la formule</h3>
+            <p class="step-text">Optez pour la formule adaptée : standard sous 2h, express immédiate, ou cargo pour les
+              volumes e-commerce.</p>
+          </div>
+
+          <div class="step-card reveal-card">
+            <div class="step-icon-wrapper">
+              <div class="step-number-badge">3</div>
+              <i data-lucide="navigation" class="step-icon"></i>
+            </div>
+            <h3 class="step-title-card">Suivez en temps réel</h3>
+            <p class="step-text">Recevez un lien de suivi interactif. Visualisez la position exacte de votre coursier et
+              l'heure estimée.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tarifs & Calculateur Section -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tagline">Formules Claires</span>
+          <h2 class="section-title">Nos Offres de Livraison</h2>
+          <p class="section-subtitle">Des tarifs transparents, sans frais cachés. Choisissez l'offre qui correspond à
+            vos impératifs.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card reveal-card" id="card-standard">
+            <div class="pricing-header">
+              <h3 class="pricing-title">Standard</h3>
+              <p class="pricing-desc">Pour vos envois planifiés ou peu urgents.</p>
+              <div class="price-wrapper">
+                <span class="price">1 500</span>
+                <span class="currency">FCFA</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" class="check-icon"></i>Livraison sous 2 à 3 heures</li>
+              <li><i data-lucide="check" class="check-icon"></i>Poids max : 5 kg (Moto)</li>
+              <li><i data-lucide="check" class="check-icon"></i>Suivi par SMS</li>
+              <li class="disabled"><i data-lucide="x" class="cross-icon"></i>Livreur exclusif dédié</li>
+            </ul>
+            <!-- Carte Standard -->
+            <div class="pricing-cta">
+              <a href="https://wa.me/2250140398876?text=Bonjour, je souhaite commander la formule Standard."
+                class="btn btn-outline" target="_blank">
+                <span class="btn-slide"></span>
+                Choisir Standard
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-card featured reveal-card" id="card-express">
+            <div class="featured-badge">Le plus populaire</div>
+            <div class="pricing-header">
+              <h3 class="pricing-title">Express</h3>
+              <p class="pricing-desc">Idéal pour les urgences. Coursier dédié.</p>
+              <div class="price-wrapper">
+                <span class="price">2 500</span>
+                <span class="currency">FCFA</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" class="check-icon"></i>Livraison en moins de 45 min</li>
+              <li><i data-lucide="check" class="check-icon"></i>Poids max : 15 kg (Moto)</li>
+              <li><i data-lucide="check" class="check-icon"></i>Suivi GPS interactif en temps réel</li>
+              <li><i data-lucide="check" class="check-icon"></i>Livreur exclusif dédié</li>
+            </ul>
+            <!-- Carte Express -->
+            <div class="pricing-cta">
+              <a href="https://wa.me/2250140398876?text=Bonjour, je souhaite commander la formule Express."
+                class="btn btn-primary" target="_blank">
+                <span class="btn-slide"></span>
+                Choisir Express
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-card reveal-card" id="card-cargo">
+            <div class="pricing-header">
+              <h3 class="pricing-title">Cargo / Volume</h3>
+              <p class="pricing-desc">Pour e-commerçants ou colis volumineux.</p>
+              <div class="price-wrapper">
+                <span class="price">5 000</span>
+                <span class="currency">FCFA</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" class="check-icon"></i>Livraison planifiée ou jour même</li>
+              <li><i data-lucide="check" class="check-icon"></i>Poids max : 150 kg (Tricycle/Auto)</li>
+              <li><i data-lucide="check" class="check-icon"></i>Suivi GPS + Signature digitale</li>
+              <li><i data-lucide="check" class="check-icon"></i>Support pro prioritaire</li>
+            </ul>
+            <!-- Carte Cargo -->
+            <div class="pricing-cta">
+              <a href="https://wa.me/2250140398876?text=Bonjour, je souhaite commander la formule Cargo / Volume."
+                class="btn btn-outline" target="_blank">
+                <span class="btn-slide"></span>
+                Choisir Cargo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculator-card glass-panel reveal-up" id="calculator-section">
+          <div class="calculator-header">
+            <h3>Simulateur de Tarif Dakar</h3>
+            <p>Obtenez une estimation immédiate de votre course en sélectionnant vos zones.</p>
+          </div>
+
+          <form class="calculator-form" id="tariff-form">
+            <div class="form-group">
+              <label for="pickup-zone">Zone de départ</label>
+              <select id="pickup-zone" class="form-select">
+                <option value="plateau">Dakar Plateau (Centre)</option>
+                <option value="medina">Médina / Colobane</option>
+                <option value="fann">Fann / Point E / Amitié</option>
+                <option value="mermoz">Mermoz / Sacré-Cœur</option>
+                <option value="yoff">Yoff / Ouakam / Ngor</option>
+                <option value="almadies">Les Almadies</option>
+                <option value="parcelles">Parcelles Assainies</option>
+                <option value="pikine">Pikine</option>
+                <option value="guediawaye">Guédiawaye</option>
+                <option value="rufisque">Rufisque</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dropoff-zone">Zone d'arrivée</label>
+              <select id="dropoff-zone" class="form-select">
+                <option value="almadies">Les Almadies</option>
+                <option value="plateau">Dakar Plateau (Centre)</option>
+                <option value="medina">Médina / Colobane</option>
+                <option value="fann">Fann / Point E / Amitié</option>
+                <option value="mermoz">Mermoz / Sacré-Cœur</option>
+                <option value="yoff">Yoff / Ouakam / Ngor</option>
+                <option value="parcelles">Parcelles Assainies</option>
+                <option value="pikine">Pikine</option>
+                <option value="guediawaye">Guédiawaye</option>
+                <option value="rufisque">Rufisque</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="service-type">Type de Service</label>
+              <select id="service-type" class="form-select">
+                <option value="standard">Standard (2h)</option>
+                <option value="express" selected>Express (45 min)</option>
+                <option value="cargo">Cargo / Volume</option>
+              </select>
+            </div>
+          </form>
+
+          <div class="calculator-result">
+            <div class="result-details">
+              <span class="result-label">Tarif estimé</span>
+              <div class="result-price" id="estimated-price">2 500 FCFA</div>
+              <span class="result-time" id="estimated-time">Temps estimé : ~35 min</span>
+            </div>
+            <!-- Le bouton reste ainsi, le JavaScript utilisera l'ID btn-submit-order -->
+            <button type="button" class="btn btn-primary btn-large btn-cta-calc" id="btn-submit-order">
+              <span class="btn-slide"></span>
+              Commander la course
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tagline">Retours d'Expérience</span>
+          <h2 class="section-title">Ce que disent nos clients</h2>
+          <p class="section-subtitle">Découvrez les témoignages de commerçants et de particuliers qui utilisent
+            LivrExpress au quotidien à Dakar.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal-card">
+            <div class="rating">★★★★★</div>
+            <p class="testimonial-text">"Grâce à LivrExpress, mon business de vente de vêtements sur Instagram a
+              explosé. Les livraisons se font le jour même et mes clientes aux Almadies reçoivent leurs commandes en un
+              clin d'œil. Le suivi GPS est magique !"</p>
+            <div class="client-info">
+              <div class="client-avatar grad-1">FD</div>
+              <div class="client-meta">
+                <span class="client-name">Fatou Diop</span>
+                <span class="client-role">E-commerçante, Almadies</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-card">
+            <div class="rating">★★★★★</div>
+            <p class="testimonial-text">"J'ai oublié des documents très importants au Plateau avant une réunion majeure
+              à l'Université. LivrExpress me les a ramenés en 30 minutes chrono. Les coursiers sont courtois,
+              professionnels et hyper rapides !"</p>
+            <div class="client-info">
+              <div class="client-avatar grad-2">AS</div>
+              <div class="client-meta">
+                <span class="client-name">Amadou Sow</span>
+                <span class="client-role">Ingénieur, Fann</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-card">
+            <div class="rating">★★★★★</div>
+            <p class="testimonial-text">"Nous travaillons avec LivrExpress pour notre restaurant. Nos plats de
+              thiéboudienne arrivent chauds et impeccablement emballés chez nos clients. La gestion des paiements à la
+              livraison est ultra transparente."</p>
+            <div class="client-info">
+              <div class="client-avatar grad-3">KN</div>
+              <div class="client-meta">
+                <span class="client-name">Khady Ndiaye</span>
+                <span class="client-role">Gérante, Restaurant Point E</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner reveal-up">
+      <div class="container cta-container">
+        <div class="cta-content">
+          <h2>Prêt à expédier votre colis ?</h2>
+          <p>Profitez du service de livraison le plus rapide et le plus fiable de Dakar dès maintenant.</p>
+        </div>
+        <div class="cta-btn-wrapper">
+          <a href="#calculator-section" class="btn btn-white btn-large">
+            <span class="btn-slide"></span>
+            Passer ma commande
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="#" class="logo footer-logo">
+          <i data-lucide="zap" class="logo-icon"></i>
+          <span>Livr<span class="text-accent">Express</span></span>
+        </a>
+        <p class="footer-desc">Service premium de livraison rapide et fiable à Dakar. Nous connectons particuliers et
+          professionnels en un temps record.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/kadmielogodwin.abe.3/" target="_blank" rel="noopener noreferrer"
+            aria-label="Facebook" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z" />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/kadmielogodwin.abe.3/" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/kadmielogodwin.abe.3/" target="_blank" rel="noopener noreferrer"
+            aria-label="TikTok" class="social-link">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contactez-nous</h4>
+        <ul class="contact-list">
+          <li><i data-lucide="phone" class="contact-icon"></i><a href="tel:+2210140398876">+221 33 800 00 00</a></li>
+          <li><i data-lucide="mail" class="contact-icon"></i><a
+              href="mailto:contact@livrexpress.sn">livrexpress@gmail.com</a></li>
+          <li><i data-lucide="map-pin" class="contact-icon"></i><span>Avenue Cheikh Anta Diop, Dakar, Sénégal</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>L'Entreprise</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">Accueil</a></li>
+          <li><a href="#how-it-works">Comment ça marche</a></li>
+          <li><a href="#pricing">Nos Tarifs</a></li>
+          <li><a href="#testimonials">Témoignages</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 kadmielabe. Tous droits réservés.</p>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-label">Système Opérationnel</span>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Politique de Confidentialité</a>
+          <span>&middot;</span>
+          <a href="#">Conditions Générales</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
